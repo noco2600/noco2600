@@ -1,2 +1,2 @@
 # noco2600-com
-noco2600 website
+Public site/blog for NoCo 2600
