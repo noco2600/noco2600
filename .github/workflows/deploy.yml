@@ -1,19 +1,10 @@
 name: Deploy to GitHub Pages
 
+# Any push to main (a new post, an edit made in the GitHub web UI, a merged
+# PR) rebuilds and deploys the site. Nobody needs to build anything locally.
 on:
   push:
     branches: ["main"]
-    paths:
-      - "_posts/**"
-      - "_layouts/**"
-      - "_includes/**"
-      - "_sass/**"
-      - "assets/**"
-      - "_config.yml"
-      - "Gemfile.lock"
-      - "**.md"
-      - "**.html"
-      - ".github/workflows/**"
   workflow_dispatch:
 
 permissions:
@@ -32,18 +23,18 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Configure Pages
-        id: pages
         uses: actions/configure-pages@v5
 
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/setup-node@v4
         with:
-          ruby-version: "3.2"
-          bundler-cache: true
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
 
       - name: Build
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
+        # Served from the root of the custom domain (CNAME), so no --pathprefix.
+        run: npx @11ty/eleventy
 
       - uses: actions/upload-pages-artifact@v3
 

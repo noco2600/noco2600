@@ -3,12 +3,12 @@ layout: default
 ---
 <article class="post">
   <header class="post-header">
-    {% if page.category %}
-      <span class="category-badge category-badge--{{ page.category | slugify }}">
-        {{ page.category }}
+    {% if category %}
+      <span class="category-badge category-badge--{{ category | slugify }}">
+        {{ category }}
       </span>
     {% endif %}
-    <h1 class="post-title">{{ page.title }}</h1>
+    <h1 class="post-title">{{ title }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">
         {{ page.date | date: "%B %-d, %Y" }}

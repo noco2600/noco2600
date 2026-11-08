@@ -1,0 +1,14 @@
+{
+  "name": "noco2600-com",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@11ty/eleventy-plugin-rss": "^2.0.4",
+    "sass": "^1.108.1"
+  }
+}

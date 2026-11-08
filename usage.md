@@ -56,6 +56,8 @@ print("hello")
 
 Once your post file is committed and pushed to `main`, GitHub Actions automatically builds and deploys the site. No other steps are needed.
 
+**No tools needed:** you can also do all of this on github.com. Open the `_posts` folder, click **Add file → Create new file**, paste your post, and commit. Editing an existing post works the same way (open it, click the pencil). Every commit to `main` rebuilds and deploys the site.
+
 If you are not pushing directly to `main`, open a pull request — the site deploys once the PR is merged.
 
 **Typical workflow:**
@@ -100,5 +102,5 @@ docker compose down
 Logs (useful if something looks wrong):
 
 ```powershell
-docker compose logs -f jekyll
+docker compose logs -f eleventy
 ```

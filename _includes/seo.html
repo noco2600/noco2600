@@ -1,0 +1,12 @@
+{%- assign seo_title = title | default: site.title -%}
+{%- assign seo_desc = description | default: site.description -%}
+<meta name="description" content="{{ seo_desc | strip_html | strip }}">
+<meta name="author" content="{{ site.author.name }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:description" content="{{ seo_desc | strip_html | strip }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:type" content="{% if tags contains 'posts' %}article{% else %}website{% endif %}">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' }}">
