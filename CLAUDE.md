@@ -46,7 +46,7 @@ Posts declare `category:` in front matter. Badge colors come from the `$badges` 
 
 ### Adding content
 
-New posts go in `_posts/YYYY-MM-DD-slug.md`. Front matter stays minimal and portable. Do not add `layout:`, since it comes from `_posts/_posts.json`:
+New posts go in `_posts/YYYY-MM-DD-slug.md`, usually copied from `_posts/_template.md` (excluded from the build in `eleventy.config.js`). Images go in `assets/images/` (passthrough-copied). With zero posts, `index.md` still renders thanks to `generatePageOnEmptyData`. Front matter stays minimal and portable. Do not add `layout:`, since it comes from `_posts/_posts.json`:
 
 ```yaml
 ---

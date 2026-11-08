@@ -2,7 +2,7 @@
 
 ## Adding a post
 
-Create a new file in `_posts/` named `YYYY-MM-DD-your-title.md`. The date in the filename controls the order posts appear on the home page.
+Copy `_posts/_template.md` to a new file in `_posts/` named `YYYY-MM-DD-your-title.md`, then fill it in. The template has the front matter, a details table, an agenda, and a formatting cheat sheet; it is never published itself. The date in the filename controls the order posts appear on the home page.
 
 **Front matter** (the block between the `---` lines at the top):
 

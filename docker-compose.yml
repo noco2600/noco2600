@@ -4,7 +4,8 @@ services:
   eleventy:
     image: node:22-slim
     working_dir: /srv/site
-    command: sh -c "npm ci && npx @11ty/eleventy --serve --port=4000"
+    # Clear old output first; Eleventy never deletes pages for removed posts.
+    command: sh -c "npm ci && rm -rf _site/* && npx @11ty/eleventy --serve --port=4000"
     ports:
       - "4000:4000"
     volumes:

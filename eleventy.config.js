@@ -5,10 +5,11 @@ import site from "./_data/site.js";
 
 export default function (eleventyConfig) {
   // ── Not site content ──────────────────────────────────────────────────────
-  for (const f of ["README.md", "usage.md", "CLAUDE.md", "LICENSE"]) {
+  for (const f of ["README.md", "usage.md", "CLAUDE.md", "LICENSE", "_posts/_template.md"]) {
     eleventyConfig.ignores.add(f);
   }
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("assets/images");
 
   // Polling for file changes inside Docker (see docker-compose.yml).
   if (process.env.ELEVENTY_POLL) {
