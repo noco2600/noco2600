@@ -8,6 +8,5 @@ export default {
   // TODO: replace with "https://noco2600.org"
   author: { name: "NoCo 2600" },
 
-  // TODO: replace with the NoCo 2600 Discord invite
   discord_url: "https://discord.com/invite/ApgRfP2DHe",
 };
