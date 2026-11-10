@@ -20,10 +20,11 @@ Your content here in Markdown.
 
 | Category       | Badge color | Use for |
 |----------------|-------------|---------|
-| `announcement` | Cyan        | Upcoming meeting details, venue, agenda |
-| `news`         | Green       | Security news roundups, CVE highlights, research links |
-| `meeting`      | Purple      | Recaps and notes from a past meeting |
-| `ctf`          | Yellow      | CTF writeups and challenge walkthroughs |
+| `announcement` | Yellow        | Upcoming meeting details, venue, agenda |
+| `news`         | Periwinkle  | Security news roundups, CVE highlights, research links |
+| `meeting`      | Gold        | Recaps and notes from a past meeting |
+| `blog`         | White       | Blogs |
+| `spotlight`    | Radical Red | Elevating projects of our community and members |
 
 Each category renders as a neon-outlined badge on the home page and post header.
 
