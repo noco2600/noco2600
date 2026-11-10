@@ -6,7 +6,7 @@ permalink: /about/
 
 # **About NoCo 2600**
 
-Welcome to **NoCo 2600**, the Northern Colorado chapter of the global 2600 hacker network. We are an open, community-driven collective of technologists, hackers, security researchers, hobbyists, and curious minds from across the region—spanning Fort Collins, Loveland, Greeley, and beyond.
+Welcome to <strong style="color: #00ff00;">NoCo 2600</strong>, the Northern Colorado chapter of the global 2600 hacker network. We are an open, community-driven collective of technologists, hackers, security researchers, hobbyists, and curious minds from across the region—spanning Fort Collins, Loveland, Greeley, and beyond.
 
 Our mission is simple: to provide a welcoming, transparent space for anyone interested in exploring technology, understanding how systems work (and how they break), and sharing knowledge without barriers.
 
@@ -19,7 +19,7 @@ Our mission is simple: to provide a welcoming, transparent space for anyone inte
 
 ### **What to Expect at Meetings**
 
-We meet on the **first Friday of every month at 7pm Starbucks @ College and Troutman.** 4218 S College Ave, Fort Collins, CO 80525\.
+We meet on the <strong style="color: #00ff00;">first Friday of every month at 7pm Starbucks @ College and Troutman.</strong> 4218 S College Ave, Fort Collins, CO 80525\.
 
 Whether you come with a custom hardware build to show off, a tricky network problem to solve, or just a desire to hang out and listen to broad tech discussions, NoCo 2600 is built on mutual respect and collaborative learning. No formal background is required—just bring your curiosity.
 
