@@ -4,7 +4,6 @@ title: About NoCo 2600
 permalink: /about/
 ---
 
-# **About NoCo 2600**
 
 Welcome to <strong style="color: #ffb000;">NoCo 2600</strong>, the Northern Colorado chapter of the global 2600 hacker network. We are an open, community-driven collective of technologists, hackers, security researchers, hobbyists, and curious minds from across the region—spanning Fort Collins, Loveland, Greeley, and beyond.
 
