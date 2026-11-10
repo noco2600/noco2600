@@ -14,7 +14,7 @@
 
 title: "December Meeting: Title of the Talk"   # keep the quotes
 date: 2026-12-04                               # YYYY-MM-DD; posts sort by this
-category: announcement                         # announcement | news | meeting | ctf
+category: announcement                         # announcement | news | meeting | blog | spotlight
 ---
 
 The first paragraph is the summary shown on the home page, so make it a one- or two-sentence overview of the post.
