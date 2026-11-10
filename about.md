@@ -25,4 +25,4 @@ Whether you come with a custom hardware build to show off, a tricky network prob
 
 ## Contact
 
-Join us on [Discord]({{ site.discord_url }}) to connect between meetings, share links, and get notified when new meetups are announced.
+Join us on [Discord]({{ [site.discord_url](https://discord.gg/ApgRfP2DHe) }}) to connect between meetings, share links, and get notified when new meetups are announced.
