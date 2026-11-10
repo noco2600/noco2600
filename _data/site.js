@@ -9,5 +9,5 @@ export default {
   author: { name: "NoCo 2600" },
 
   // TODO: replace with the NoCo 2600 Discord invite
-  discord_url: "#",
+  discord_url: "https://discord.com/invite/ApgRfP2DHe",
 };
