@@ -5,6 +5,7 @@ export default {
   description:
     "A community for security professionals and enthusiasts in northern Colorado, meeting monthly to share knowledge, tools, and research.",
   url: "https://noco2600.com",
+  // TODO: replace with "https://noco2600.org"
   author: { name: "NoCo 2600" },
 
   // TODO: replace with the NoCo 2600 Discord invite
