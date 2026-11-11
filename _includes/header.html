@@ -1,26 +1,15 @@
 <header class="site-header">
   <div class="container">
-    {% if body_class == "cold-storage" %}
-      <div class="site-header__brand">
-        <a class="site-title" href="/cold-storage/">&#10052; Cold Storage</a>
-        <span class="site-tagline">// {{ site.title }} archive &middot; read-only</span>
-      </div>
-      <nav class="site-nav">
-        <a href="/">&larr; {{ site.title }}</a>
-        <a href="/about/">About</a>
-      </nav>
-    {% else %}
-      <div class="site-header__brand">
-        <a class="site-title glitch" href="/" data-text="{{ site.title }}">{{ site.title }}</a>
-        {% if site.tagline %}
-          <span class="site-tagline">// {{ site.tagline }}</span>
-        {% endif %}
-      </div>
-      <nav class="site-nav">
-        <a href="/about/">About</a>
-        <a href="/cold-storage/">Cold Storage</a>
-        <a href="{{ site.discord_url }}" target="_blank" rel="noopener">Discord</a>
-      </nav>
-    {% endif %}
+    <div class="site-header__brand">
+      <a class="site-title glitch" href="{{ '/' }}" data-text="{{ site.title }}">{{ site.title }}</a>
+      {% if site.tagline %}
+        <span class="site-tagline">// {{ site.tagline }}</span>
+      {% endif %}
+    </div>
+    <nav class="site-nav">
+      <a href="{{ '/about/' }}">About</a>
+      <a href="/cold-storage/">Cold Storage</a>
+      <a href="{{ site.discord_url }}" target="_blank" rel="noopener">Discord</a>
+    </nav>
   </div>
 </header>

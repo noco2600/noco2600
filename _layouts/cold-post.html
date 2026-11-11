@@ -2,28 +2,33 @@
 layout: default
 body_class: cold-storage
 ---
-<article class="post cold-post">
-  <p class="cold-banner">
-    <span class="cold-banner__tag">&#10052; Read-only</span>
-    Archived post. It's kept exactly as it was and won't be updated, so details and links may be out of date.
+<article class="gc-panel">
+  <p class="gc-frozen">
+    <span class="gc-blink">ARCHIVED!</span>
+    This page is an archive and won't be updated. Dates, places and links may be out of date.
   </p>
 
-  <header class="post-header">
-    {% if category %}
-      <span class="category-badge">{{ category }}</span>
-    {% endif %}
-    <h1 class="post-title">{{ title }}</h1>
-    <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%B %-d, %Y" }}
-      </time>
-      {% if author %}&middot; {{ author }}{% endif %}
-    </p>
-  </header>
+  <h1 class="gc-h1">{{ title }}</h1>
+  <p class="gc-meta">
+    Posted
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    {% if author %}by <b>{{ author }}</b>{% endif %}
+    {% if category %}in <i>{{ category }}</i>{% endif %}
+  </p>
+  <hr class="gc-hr">
 
-  <div class="post-content">
+  <div class="gc-content">
     {{ content }}
   </div>
-
-  <p class="cold-back"><a href="/cold-storage/">&larr; Back to Cold Storage</a></p>
 </article>
+
+{% assign older = collections.coldstorage | getPreviousCollectionItem: page %}
+{% assign newer = collections.coldstorage | getNextCollectionItem: page %}
+<nav class="gc-ring" aria-label="Archive navigation">
+  <p class="gc-ring__title">&#9733; The NoCo 2600 Cold Storage Ring &#9733;</p>
+  <p class="gc-ring__links">
+    {% if older %}<a class="gc-btn" href="{{ older.url }}" title="{{ older.data.title }}">&laquo; Older</a>{% else %}<span class="gc-btn gc-btn--off">&laquo; Older</span>{% endif %}
+    <a class="gc-btn" href="/cold-storage/">Index</a>
+    {% if newer %}<a class="gc-btn" href="{{ newer.url }}" title="{{ newer.data.title }}">Newer &raquo;</a>{% else %}<span class="gc-btn gc-btn--off">Newer &raquo;</span>{% endif %}
+  </p>
+</nav>

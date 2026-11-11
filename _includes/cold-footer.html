@@ -1,0 +1,22 @@
+<footer class="gc-footer">
+  <hr class="gc-hr">
+
+  <p class="gc-counter">
+    There are
+    <span class="gc-lcd">{{ collections.coldstorage.size | prepend: "000000" | slice: -6, 6 }}</span>
+    posts in the archive
+  </p>
+
+  <div class="gc-badges">
+    <span class="gc-88 gc-88--noco" aria-hidden="true"><b>NOCO</b>2600</span>
+    <span class="gc-88 gc-88--y2k" aria-hidden="true">Y2K<br>COMPLIANT</span>
+    <a class="gc-88-link" href="https://en.wikipedia.org/wiki/Netscape_Navigator" target="_blank" rel="noopener" title="Best viewed with Netscape Navigator"><img src="/assets/images/cold-storage/badges/netscape-88x31.gif" width="88" height="31" alt="Best viewed with Netscape Navigator"></a>
+    <span class="gc-88 gc-88--java" aria-hidden="true">NO JAVA<br>REQUIRED</span>
+    <span class="gc-88 gc-88--hack" aria-hidden="true">HACK THE<br>PLANET!</span>
+  </div>
+
+  <p class="gc-small">
+    &copy; 2012&ndash;{{ 'now' | date: "%Y" }} {{ site.title }} &middot; Archived November 2026 &middot; Best viewed with any browser<br>
+    <a href="/">Return to the present day &raquo;</a>
+  </p>
+</footer>

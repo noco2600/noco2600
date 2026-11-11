@@ -1,221 +1,483 @@
 @use 'variables' as *;
 
-// ─── Cold Storage ────────────────────────────────────────────────────────────
-// Archive section with its own look. Every rule is nested under
-// body.cold-storage (set by the cold-post / cold-storage layouts) so nothing
-// here can leak into the main site. Palette is local to this file.
+// ─── Cold Storage: late-90s personal homepage ────────────────────────────────
+// Archive section with its own look. The cold layouts set body_class:
+// cold-storage, and default.html swaps in cold-header/cold-footer. Every rule
+// here is nested under body.cold-storage so nothing leaks into the main site.
+// Palette and fonts are local to this file. No images: it's all CSS.
 
-$ice-bg:       #0B1220;   // deep blue-black
-$ice-surface:  #111B2E;
-$ice:          #7FDBFF;   // ice cyan — accents
-$ice-soft:     #C8E6F5;   // frost — headings, text highlights
-$ice-text:     #DCE7F2;
-$ice-muted:    #6B7F99;
-$ice-border:   rgba($ice, 0.15);
-$ice-band:     #070C16;   // header/footer bands, darker than the page
+$gc-night:   #000033;   // starfield
+$gc-navy:    #000080;
+$gc-silver:  #C0C0C0;   // Win95 chrome
+$gc-shadow:  #808080;
+$gc-dark:    #404040;
+$gc-yellow:  #FFFF00;
+$gc-cyan:    #00FFFF;
+$gc-magenta: #FF00FF;
+$gc-lime:    #39FF14;
+$gc-link:    #0000EE;   // classic default link blue
+$gc-visited: #551A8B;
+
+$gc-times: "Times New Roman", Times, serif;
+$gc-comic: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
+$gc-arial: Arial, Helvetica, sans-serif;
+$gc-black: "Arial Black", Impact, "Haettenschweiler", sans-serif;
+$gc-mono:  "Courier New", Courier, monospace;
+// Needs real box-drawing glyphs at monospace width, or the ANSI art breaks.
+$gc-ansi-font: Menlo, Consolas, "DejaVu Sans Mono", "Lucida Console", monospace;
+
+$gc-rainbow: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff, #ff00ff);
+
+@mixin bevel-out {
+  border: 2px solid;
+  border-color: #fff $gc-dark $gc-dark #fff;
+  box-shadow: inset -1px -1px $gc-shadow, inset 1px 1px #dfdfdf;
+}
+
+@mixin bevel-in {
+  border: 2px solid;
+  border-color: $gc-dark #fff #fff $gc-dark;
+  box-shadow: inset 1px 1px $gc-shadow;
+}
 
 body.cold-storage {
-  background: $ice-bg;
-  color: $ice-text;
+  margin: 0;
+  font-family: $gc-times;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  background-color: $gc-night;
+  // Tiled starfield: dot layers at different tile sizes.
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 120px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 60px 150px, #ffffcc, transparent),
+    radial-gradient(1px 1px at 170px 20px, #ccccff, transparent),
+    radial-gradient(1px 1px at 90px 110px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 60px, #fff, transparent);
+  background-size: 200px 200px, 200px 200px, 200px 200px, 260px 260px, 260px 260px, 340px 340px;
 
-  // Swap the yellow scanlines for a faint frost vignette at the edges.
-  &::after {
-    background:
-      radial-gradient(ellipse at top left,     rgba($ice, 0.07), transparent 45%),
-      radial-gradient(ellipse at bottom right, rgba($ice, 0.05), transparent 50%);
-  }
-
-  ::selection { background: rgba($ice, 0.3); color: #fff; }
+  &::after { display: none; } // no main-site scanlines
 
   a {
-    color: $ice;
-    &:hover { text-shadow: 0 0 8px rgba($ice, 0.6); }
+    color: $gc-cyan;
+    text-decoration: underline;
+    &:visited { color: $gc-magenta; }
+    &:hover { color: $gc-yellow; text-shadow: none; }
   }
 
-  code {
-    color: $ice-soft;
-    background: $ice-surface;
-    border-color: $ice-border;
+  // ── Header ──
+  .gc-header {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 0.5rem;
+    text-align: center;
   }
 
-  pre {
-    background: $ice-surface;
-    border-left-color: $ice;
+  // NFO-style ANSI block-letter logo (old-school warez page vibe)
+  .gc-warez {
+    display: inline-block;
+    max-width: 100%;
+    text-decoration: none;
+    &:hover .gc-ansi { filter: drop-shadow(0 0 6px rgba(255, 120, 0, 0.9)); }
   }
 
-  // ── Header / footer ──
-  .site-header,
-  .site-footer {
-    background: $ice-band;
-    border-color: $ice-border;
-    box-shadow: 0 1px 0 rgba($ice, 0.08), 0 4px 30px rgba($ice, 0.05);
+  .gc-warez__bar {
+    display: block;
+    font-family: $gc-ansi-font;
+    font-size: min(13px, 2.4vw);
+    line-height: 1;
+    letter-spacing: 0;
+    color: #990000;
+    white-space: pre;
   }
 
-  .site-title {
-    color: $ice-soft;
-    font-weight: 300;
-    letter-spacing: 0.14em;
-    text-transform: lowercase;
-    text-shadow: 0 0 12px rgba($ice, 0.45);
+  .gc-ansi {
+    display: inline-block;
+    margin: 0.4rem 0;
+    padding: 0;
+    text-align: left;
+    font-family: $gc-ansi-font;
+    font-size: min(13px, 2.4vw);
+    line-height: 1.05;
+    letter-spacing: 0;
+    overflow: visible;
+    border: 0;
+    // Fire gradient, repeated once per word (6 rows each).
+    background: linear-gradient(#ffffcc 0%, #ffff00 18%, #ff9900 50%, #ff2200 82%, #880000 100%);
+    background-size: 100% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 4px rgba(255, 80, 0, 0.6));
+    animation: gc-flicker 6s steps(1) infinite;
 
-    &:hover {
-      color: #fff;
-      text-shadow: 0 0 18px rgba($ice, 0.8);
+    // Box-drawing "shadow" characters
+    i { font-style: normal; color: #5a5a7a; }
+  }
+
+  .gc-subtitle {
+    margin: 0.4rem 0 1rem;
+    font-family: $gc-mono;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: $gc-lime;
+    text-shadow: 0 0 6px rgba($gc-lime, 0.6);
+  }
+
+  .gc-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto 1rem;
+    padding: 0.25rem 0;
+    font-family: $gc-mono;
+    font-weight: bold;
+    color: $gc-lime;
+    background: #000;
+    @include bevel-in;
+
+    span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: gc-marquee 28s linear infinite;
     }
   }
 
-  .site-tagline,
-  .site-footer { color: $ice-muted; }
+  .gc-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+  }
 
-  .site-nav a {
-    color: $ice-muted;
-    &:hover {
-      color: $ice;
-      text-shadow: 0 0 8px rgba($ice, 0.6);
+  // ── Win95 buttons ──
+  .gc-btn {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-family: $gc-arial;
+    font-size: 0.8rem;
+    color: #000;
+    text-decoration: none;
+    background: $gc-silver;
+    @include bevel-out;
+
+    &:visited { color: #000; }
+    &:hover { color: $gc-navy; }
+    &:active { @include bevel-in; }
+    &:focus-visible { outline: 1px dotted #000; outline-offset: -5px; }
+
+    &--off { color: $gc-shadow; text-shadow: 1px 1px #fff; }
+  }
+
+  // ── Main / panel ──
+  .gc-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .gc-panel {
+    padding: 1.25rem 1.5rem 1.5rem;
+    color: #000;
+    background: #fff;
+    border: 6px ridge $gc-silver;
+
+    a { color: $gc-link; }
+    a:visited { color: $gc-visited; }
+    a:hover { color: #ff0000; }
+
+    @media (max-width: 560px) { padding: 1rem; }
+  }
+
+  .gc-h1 {
+    margin: 0.25rem 0 0.5rem;
+    font-family: $gc-comic;
+    font-size: 1.9rem;
+    line-height: 1.2;
+    color: $gc-navy;
+    text-align: center;
+  }
+
+  .gc-meta {
+    margin: 0 0 0.75rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .gc-hr {
+    height: 4px;
+    margin: 1rem 0;
+    border: 0;
+    background: $gc-rainbow;
+  }
+
+  .gc-frozen {
+    margin: 0 0 1rem;
+    padding: 0.4rem 0.75rem;
+    font-family: $gc-arial;
+    font-size: 0.85rem;
+    background: #ffffcc;
+    border: 1px dashed #cc9900;
+  }
+
+  .gc-blink {
+    margin-right: 0.35rem;
+    font-weight: bold;
+    color: #ff0000;
+    animation: gc-blink 1s steps(1) infinite;
+  }
+
+  .gc-construction {
+    margin: 0 0 1.25rem;
+    padding: 6px;
+    text-align: center;
+    background: repeating-linear-gradient(-45deg, #ffcc00 0 14px, #000 14px 28px);
+
+    span {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-family: $gc-black;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: #000;
+      background: #ffcc00;
     }
   }
 
-  // ── Shared post / page bits ──
-  .post-header,
-  .page-header { border-color: $ice-border; }
+  // ── Post / page body ──
+  .gc-content {
+    font-size: 1.05rem;
 
-  .post-title,
-  .page-title { color: $ice-soft; }
-
-  .post-meta { color: $ice-muted; font-family: $font-mono; }
-
-  .post-content,
-  .page-content {
-    h2, h3, h4 { color: $ice-soft; }
-    h2 { border-color: $ice-border; }
-
-    a {
-      border-bottom-color: rgba($ice, 0.3);
-      &:hover { border-bottom-color: $ice; }
+    h2, h3, h4 {
+      font-family: $gc-comic;
+      color: $gc-navy;
+      margin: 1.5rem 0 0.5rem;
     }
 
-    img { border-color: $ice-border; filter: saturate(0.85); }
+    p, ul, ol { margin: 0 0 1rem; }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1rem auto;
+      border: 3px ridge $gc-silver;
+    }
 
     iframe {
       display: block;
       max-width: 100%;
       height: auto;
       aspect-ratio: 16 / 9;
-      margin: $spacing-unit auto;
-      border: 1px solid $ice-border;
+      margin: 1rem auto;
+      border: 3px ridge $gc-silver;
+    }
+
+    code {
+      font-family: $gc-mono;
+      font-size: 0.9em;
+      color: #000;
+      background: #ffffcc;
+      border: 0;
+      padding: 0 0.2em;
+    }
+
+    pre {
+      padding: 0.75rem 1rem;
+      overflow-x: auto;
+      font-family: $gc-mono;
+      color: $gc-lime;
+      background: #000;
+      @include bevel-in;
+
+      code { color: inherit; background: none; padding: 0; }
     }
 
     blockquote {
-      margin: 0 0 $spacing-unit;
+      margin: 0 0 1rem;
       padding: 0.5rem 1rem;
-      border-left: 2px solid $ice;
-      background: rgba($ice, 0.04);
-      color: $ice-soft;
+      font-style: italic;
+      background: #f0f0ff;
+      border-left: 4px solid $gc-navy;
     }
 
     table {
-      th, td { border-color: $ice-border; }
-      th { background: $ice-surface; color: $ice; }
-      tr:nth-child(even) td { background: rgba($ice-surface, 0.5); }
+      border-collapse: separate;
+      border-spacing: 2px;
+      margin-bottom: 1rem;
+      @include bevel-out;
+
+      th, td { padding: 0.25rem 0.5rem; @include bevel-in; }
+      th { background: $gc-silver; font-family: $gc-arial; }
     }
   }
 
-  // Archived categories may not exist in $badges any more; render them all
-  // in one frosted style instead.
-  .category-badge {
-    color: $ice-soft;
-    border-color: rgba($ice, 0.5);
-    text-shadow: none;
-    box-shadow: none;
+  // ── Archive index ──
+  .gc-year {
+    margin: 1.75rem 0 0.5rem;
+    font-family: $gc-comic;
+    font-size: 1.4rem;
+    color: #cc0000;
+    text-align: center;
+
+    span { color: #ffcc00; text-shadow: 1px 1px 0 #000; }
   }
 
-  // ── Read-only banner (post pages) ──
-  .cold-banner {
-    margin: 0 0 $spacing-unit * 1.5;
-    padding: 0.7rem 1rem;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    color: $ice-muted;
-    border: 1px dashed rgba($ice, 0.35);
-    background: rgba($ice, 0.04);
+  .gc-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 2px;
+    background: $gc-silver;
+    @include bevel-out;
+
+    td {
+      padding: 0.3rem 0.5rem;
+      vertical-align: top;
+      background: #fff;
+      @include bevel-in;
+    }
+
+    tr:nth-child(even) td { background: #eef4ff; }
+
+    &__date {
+      width: 6.5rem;
+      white-space: nowrap;
+      font-family: $gc-mono;
+      font-size: 0.9rem;
+    }
+
+    &__cat {
+      width: 7rem;
+      font-family: $gc-arial;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    @media (max-width: 560px) {
+      &__cat { display: none; }
+      &__date { width: auto; }
+    }
   }
 
-  .cold-banner__tag {
-    display: inline-block;
-    margin-right: 0.5rem;
-    font-family: $font-display;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: $ice;
+  // ── Webring ──
+  .gc-ring {
+    margin: 1.25rem 0 0;
+    padding: 0.75rem;
+    text-align: center;
+    background: $gc-navy;
+    border: 4px ridge $gc-silver;
   }
 
-  .cold-back {
-    margin-top: $spacing-unit * 2;
-    padding-top: $spacing-unit;
-    border-top: 1px solid $ice-border;
-    font-family: $font-display;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-  }
-
-  // ── Index ──
-  .cold-index__intro { color: $ice-muted; }
-
-  .cold-year { margin-top: $spacing-unit * 1.5; }
-
-  .cold-year__label {
+  .gc-ring__title {
     margin: 0 0 0.5rem;
-    font-family: $font-mono;
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    color: $ice;
-    border-bottom: 1px solid $ice-border;
-    padding-bottom: 0.3rem;
+    font-family: $gc-comic;
+    font-weight: bold;
+    color: $gc-yellow;
   }
 
-  .cold-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .cold-item {
+  .gc-ring__links {
     display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    padding: 0.45rem 0;
-    border-bottom: 1px solid rgba($ice, 0.06);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 0;
   }
 
-  .cold-item__date {
-    flex: none;
-    font-family: $font-mono;
-    font-size: 0.8rem;
-    color: $ice-muted;
+  // ── Footer ──
+  .gc-footer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+    text-align: center;
+    color: $gc-silver;
+    font-size: 0.85rem;
   }
 
-  .cold-item__title {
-    flex: 1;
-    min-width: 0;
-    color: $ice-text;
-    &:hover { color: $ice; }
+  .gc-counter {
+    margin: 1rem 0;
+    font-family: $gc-comic;
+    color: #fff;
   }
 
-  .cold-item__cat {
-    flex: none;
-    font-family: $font-display;
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: $ice-muted;
+  .gc-lcd {
+    display: inline-block;
+    margin: 0 0.3rem;
+    padding: 0.1rem 0.4rem;
+    font-family: $gc-mono;
+    font-weight: bold;
+    font-size: 1.15rem;
+    letter-spacing: 0.2em;
+    color: $gc-lime;
+    background: #000;
+    @include bevel-in;
   }
 
-  .cold-empty { color: $ice-muted; font-style: italic; }
-
-  @media (max-width: 560px) {
-    .cold-item { flex-wrap: wrap; gap: 0.25rem 0.75rem; }
-    .cold-item__title { flex-basis: 100%; order: 2; }
+  .gc-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 0 0 1rem;
   }
+
+  // 88×31 buttons
+  .gc-88 {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 88px;
+    height: 31px;
+    box-sizing: border-box;
+    font-family: $gc-arial;
+    font-size: 9px;
+    font-weight: bold;
+    line-height: 1.1;
+    text-align: center;
+    border: 1px solid #000;
+
+    &--noco {
+      flex-direction: row;
+      gap: 3px;
+      font-size: 12px;
+      color: #000;
+      background: #ffcc00;
+      b { color: #fff; background: #000; padding: 0 2px; }
+    }
+    &--y2k  { color: #fff; background: linear-gradient(#0000aa, #000044); }
+    &--res  { color: #000; background: linear-gradient($gc-silver, #fff); }
+    &--java { color: $gc-yellow; background: #800000; }
+    &--hack { color: $gc-lime; background: #000; font-family: $gc-mono; }
+  }
+
+  .gc-88-link { display: inline-block; line-height: 0; }
+  .gc-88-link img { display: block; image-rendering: pixelated; }
+
+  .gc-small {
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gc-marquee span { animation: none; padding-left: 0; white-space: normal; }
+    .gc-blink, .gc-ansi { animation: none; }
+  }
+}
+
+@keyframes gc-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+@keyframes gc-flicker {
+  0%, 100% { opacity: 1; }
+  92%      { opacity: 0.85; }
+  93%      { opacity: 1; }
+  95%      { opacity: 0.9; }
+}
+
+@keyframes gc-blink {
+  50% { opacity: 0; }
 }

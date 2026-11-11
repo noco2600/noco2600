@@ -11,10 +11,18 @@
   {% include "seo.html" %}
 </head>
 <body{% if body_class %} class="{{ body_class }}"{% endif %}>
-  {% include "header.html" %}
-  <main class="container">
-    {{ content }}
-  </main>
-  {% include "footer.html" %}
+  {% if body_class == "cold-storage" %}
+    {% include "cold-header.html" %}
+    <main class="gc-main">
+      {{ content }}
+    </main>
+    {% include "cold-footer.html" %}
+  {% else %}
+    {% include "header.html" %}
+    <main class="container">
+      {{ content }}
+    </main>
+    {% include "footer.html" %}
+  {% endif %}
 </body>
 </html>

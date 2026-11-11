@@ -62,7 +62,8 @@ category: announcement  # announcement | news | meeting | blog | spotlight
 
 - `_cold-storage/_cold-storage.json`: layout `cold-post`, tag `coldstorage` (so these never enter `collections.posts`, the home feed, or `/feed.xml`), permalink `/cold-storage/<slug>/`, and `templateEngineOverride: md` so old content is never run through Liquid.
 - `cold-storage.md`: the index page (layout `cold-storage`, grouped by year).
-- Separate look and feel: both cold layouts set `body_class: cold-storage`, which `default.html` puts on `<body>`. All styling lives in `_sass/_cold-storage.scss`, nested under `body.cold-storage`, with its own local palette. `header.html` swaps in the Cold Storage brand when `body_class == "cold-storage"`.
+- Separate look and feel (late-90s GeoCities homepage): both cold layouts set `body_class: cold-storage`, which `default.html` puts on `<body>` and uses to swap in `cold-header.html` / `cold-footer.html` instead of the main header and footer. All styling lives in `_sass/_cold-storage.scss` (`gc-*` classes), nested under `body.cold-storage`, with its own local palette and fonts. It's pure CSS, no images. Animations (marquee, blink) are disabled under `prefers-reduced-motion`.
+- Post pages end in a "webring" bar linking the previous/next archived post (`getPreviousCollectionItem` / `getNextCollectionItem`).
 - `cold-storage-redirects.html`: paginates the collection and writes a meta-refresh page at each post's `original_path` (the old `/YYYY/MM/slug/` WordPress URL) so old links still resolve.
 - Images referenced by archived posts live in `assets/images/cold-storage/`.
 

@@ -2,12 +2,14 @@
 layout: default
 body_class: cold-storage
 ---
-<section class="cold-index">
-  <header class="page-header">
-    <h1 class="page-title">{{ title }}</h1>
-  </header>
+<section class="gc-panel">
+  <h1 class="gc-h1">{{ title }}</h1>
 
-  <div class="page-content cold-index__intro">
+  <div class="gc-construction">
+    <span>&#9888; This page will NEVER be under construction &#9888;</span>
+  </div>
+
+  <div class="gc-content">
     {{ content }}
   </div>
 
@@ -17,20 +19,20 @@ body_class: cold-storage
     {% for post in items %}
       {% assign y = post.date | date: "%Y" %}
       {% if y != current_year %}
-        {% unless forloop.first %}</ul></section>{% endunless %}
-        <section class="cold-year">
-          <h2 class="cold-year__label">{{ y }}</h2>
-          <ul class="cold-list">
+        {% unless forloop.first %}</tbody></table>{% endunless %}
+        <h2 class="gc-year"><span aria-hidden="true">&#9733;</span> {{ y }} <span aria-hidden="true">&#9733;</span></h2>
+        <table class="gc-table">
+          <tbody>
         {% assign current_year = y %}
       {% endif %}
-      <li class="cold-item">
-        <time class="cold-item__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m.%d" }}</time>
-        <a class="cold-item__title" href="{{ post.url }}">{{ post.data.title }}</a>
-        {% if post.data.category %}<span class="cold-item__cat">{{ post.data.category }}</span>{% endif %}
-      </li>
-      {% if forloop.last %}</ul></section>{% endif %}
+            <tr>
+              <td class="gc-table__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m/%d/%y" }}</time></td>
+              <td class="gc-table__title"><a href="{{ post.url }}">{{ post.data.title }}</a></td>
+              <td class="gc-table__cat">{{ post.data.category }}</td>
+            </tr>
+      {% if forloop.last %}</tbody></table>{% endif %}
     {% endfor %}
   {% else %}
-    <p class="cold-empty">Nothing in storage yet.</p>
+    <p>Nothing in the archive yet.</p>
   {% endif %}
 </section>
