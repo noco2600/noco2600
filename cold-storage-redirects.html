@@ -1,0 +1,23 @@
+---
+# Old WordPress URLs (e.g. /2012/08/meeting-1/) were on this same domain.
+# This writes a tiny redirect page at each one, pointing into /cold-storage/.
+pagination:
+  data: collections.coldstorage
+  size: 1
+  alias: post
+permalink: "{{ post.data.original_path }}"
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moved to Cold Storage</title>
+  <link rel="canonical" href="{{ site.url }}{{ post.url }}">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={{ post.url }}">
+</head>
+<body>
+  <p>This post moved to <a href="{{ post.url }}">{{ site.url }}{{ post.url }}</a>.</p>
+</body>
+</html>

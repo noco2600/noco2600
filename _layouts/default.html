@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' }}">
   {% include "seo.html" %}
 </head>
-<body>
+<body{% if body_class %} class="{{ body_class }}"{% endif %}>
   {% include "header.html" %}
   <main class="container">
     {{ content }}

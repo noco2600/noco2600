@@ -1,0 +1,6 @@
+{
+  "layout": "cold-post",
+  "tags": "coldstorage",
+  "permalink": "/cold-storage/{{ page.fileSlug }}/",
+  "templateEngineOverride": "md"
+}

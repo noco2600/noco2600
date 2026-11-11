@@ -52,10 +52,20 @@ New posts go in `_posts/YYYY-MM-DD-slug.md`, usually copied from `_posts/_templa
 ---
 title: "Title"
 date: YYYY-MM-DD
-category: announcement  # announcement | news | meeting | ctf
+category: announcement  # announcement | news | meeting | blog | spotlight
 ---
 ```
 
+### Cold Storage (archive)
+
+`/cold-storage/` holds historical posts (2012–2022, imported from the old WordPress site). It is **frozen**: do not edit, reformat, or "fix" files in `_cold-storage/`. The point is that they stay as they were.
+
+- `_cold-storage/_cold-storage.json`: layout `cold-post`, tag `coldstorage` (so these never enter `collections.posts`, the home feed, or `/feed.xml`), permalink `/cold-storage/<slug>/`, and `templateEngineOverride: md` so old content is never run through Liquid.
+- `cold-storage.md`: the index page (layout `cold-storage`, grouped by year).
+- Separate look and feel: both cold layouts set `body_class: cold-storage`, which `default.html` puts on `<body>`. All styling lives in `_sass/_cold-storage.scss`, nested under `body.cold-storage`, with its own local palette. `header.html` swaps in the Cold Storage brand when `body_class == "cold-storage"`.
+- `cold-storage-redirects.html`: paginates the collection and writes a meta-refresh page at each post's `original_path` (the old `/YYYY/MM/slug/` WordPress URL) so old links still resolve.
+- Images referenced by archived posts live in `assets/images/cold-storage/`.
+
 ## Deployment
 
-`.github/workflows/deploy.yml` runs on **every** push to `main` (plus manual `workflow_dispatch`): `npm ci`, then `eleventy`, then deploys `_site/` to GitHub Pages. `CNAME` (`noco2600.com`) is passed through to the output; the site is served from the domain root, so no `--pathprefix` is used. (If one is ever needed, note that `@11ty/eleventy-plugin-rss` registers the HTML base plugin twice and the prefix gets applied twice.) The repo's Pages source must be set to "GitHub Actions". Keep `package-lock.json` committed so CI and local builds use identical versions.
+`.github/workflows/deploy.yml` runs on **every** push to `main` (plus manual `workflow_dispatch`): `npm ci`, then `eleventy`, then deploys `_site/` to GitHub Pages. `CNAME` (`noco2600.org`) is passed through to the output; the site is served from the domain root, so no `--pathprefix` is used. (If one is ever needed, note that `@11ty/eleventy-plugin-rss` registers the HTML base plugin twice and the prefix gets applied twice.) The repo's Pages source must be set to "GitHub Actions". Keep `package-lock.json` committed so CI and local builds use identical versions.

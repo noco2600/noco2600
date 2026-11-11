@@ -1,0 +1,12 @@
+---
+title: "Russian Hackers disguise Kelihos bot as Anti-Government Software"
+date: 2014-08-30
+author: "montechartier"
+category: news
+original_path: /2014/08/russian-hackers-disguise-kelihos-bot-as-anti-government-software/
+---
+## Russian Hackers are spreading the Kelihos Trojan leading victims into believing that it is a software to hit Western Governments.
+
+[<span class="GINGER_SOFTWARE_mark" id="8e08715e-a119-420e-b072-54fdf1057160"><span class="GINGER_SOFTWARE_mark" id="1b576df2-6eff-4d8a-9757-772dc8116762"><span class="GINGER_SOFTWARE_mark" id="e0e6cf7f-ac3c-42a5-8f9e-e05191a99afb"><span class="GINGER_SOFTWARE_mark" id="51a8009d-cdfb-4bb1-8339-cd0bca2c9742"><span class="GINGER_SOFTWARE_mark" id="9d07d968-d509-4626-b06c-30c6c9512e06">Kelihos</span></span></span></span></span> <span class="GINGER_SOFTWARE_mark" id="a56274b5-c06c-4125-a43f-81a9abaf13df"><span class="GINGER_SOFTWARE_mark" id="ab031190-e9fe-4497-b43d-49d17b3bcab2"><span class="GINGER_SOFTWARE_mark" id="e258e067-8f9c-4e43-b878-fe9d4f38a2f3"><span class="GINGER_SOFTWARE_mark" id="f260eaf7-903d-4d30-b1df-6bf29f0cdcf8"><span class="GINGER_SOFTWARE_mark" id="9bda9f2a-e7f3-477a-88be-acfabfde912c"><span class="GINGER_SOFTWARE_mark" id="58af8912-6ab2-4e69-9ede-fe33b7e19a26">botnet</span></span></span></span></span></span>](http://securityaffairs.co/wordpress/6545/cyber-crime/on-new-generation-of-p2p-botnets.html "On new generation of P2P botnets") is still active and exploited by the cybercrime ecosystem to monetize its effort as [discovered](http://labs.bitdefender.com/2014/08/russian-hackers-promise-anti-government-software-deliver-kelihos-trojan-instead/ "http://labs.bitdefender.com/2014/08/russian-hackers-promise-anti-government-software-deliver-kelihos-trojan-instead/") by security experts at Bitdefender. Cyber criminals have a single purpose, to earn money by any means, for this reason it is not surprising that Russian hackers are riding the interest on the conflict in [Ukraine](http://securityaffairs.co/wordpress/27065/intelligence/satellite-images-ukraine-hit.html "Satellite images demonstrate that Ukraine is hit by pro-Russian troops across the border") to serve malware via links found in [spam emails](http://securityaffairs.co/wordpress/2197/cyber-crime/new-drive-by-spam-infects-unsuspecting-users.html "New Drive-By Spam Infects unsuspecting users") purporting to support the Russian cause.
+
+> [Russian Hackers disguise Kelihos bot as Anti-Government Software](http://securityaffairs.co/wordpress/27827/cyber-crime/russian-hackers-disguise-kelihos.html)

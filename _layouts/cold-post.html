@@ -1,0 +1,29 @@
+---
+layout: default
+body_class: cold-storage
+---
+<article class="post cold-post">
+  <p class="cold-banner">
+    <span class="cold-banner__tag">&#10052; Read-only</span>
+    Archived post. It's kept exactly as it was and won't be updated, so details and links may be out of date.
+  </p>
+
+  <header class="post-header">
+    {% if category %}
+      <span class="category-badge">{{ category }}</span>
+    {% endif %}
+    <h1 class="post-title">{{ title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+      {% if author %}&middot; {{ author }}{% endif %}
+    </p>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <p class="cold-back"><a href="/cold-storage/">&larr; Back to Cold Storage</a></p>
+</article>

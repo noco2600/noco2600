@@ -53,6 +53,12 @@ print("hello")
 
 ---
 
+## Cold Storage (archive)
+
+[`/cold-storage/`](https://noco2600.org/cold-storage/) holds posts from the old site (2012–2022). Those files live in `_cold-storage/` and are frozen: please don't edit them. New posts always go in `_posts/`.
+
+---
+
 ## Publishing
 
 Once your post file is committed and pushed to `main`, GitHub Actions automatically builds and deploys the site. No other steps are needed.
