@@ -1,4 +1,5 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import * as sass from "sass";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import site from "./_data/site.js";
@@ -44,7 +45,12 @@ export default function (eleventyConfig) {
         loadPaths: [path.dirname(inputPath), "_sass"],
         style: "compressed",
       });
-      this.addDependencies(inputPath, result.loadedUrls);
+      // Sass reports file:// URLs; Eleventy's watcher needs paths, or edits to
+      // a partial never trigger a recompile of main.scss.
+      this.addDependencies(
+        inputPath,
+        result.loadedUrls.filter((u) => u.protocol === "file:").map((u) => fileURLToPath(u)),
+      );
       return () => result.css;
     },
   });
