@@ -9,6 +9,9 @@ export default function (eleventyConfig) {
     eleventyConfig.ignores.add(f);
   }
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy({ ".well-known": ".well-known" });
+  eleventyConfig.addPassthroughCopy({ ".well-known/security.txt": "security.txt" });
   eleventyConfig.addPassthroughCopy("assets/images");
 
   // Polling for file changes inside Docker (see docker-compose.yml).
